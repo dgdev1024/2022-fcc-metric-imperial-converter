@@ -23,11 +23,11 @@ module.exports = function (app) {
 
     // Early out if one or both of the above boolean checks return false.
     if (initNum === "invalid number" && initUnit === "invalid unit") {
-      return res.status(400).json({ error: "invalid number and unit" });
+      return res.send("invalid number and unit");
     } else if (initUnit === "invalid unit") {
-      return res.status(400).json({ error: "invalid unit" });
+      return res.send("invalid unit");
     } else if (initNum === "invalid number") {
-      return res.status(400).json({ error: "invalid number" });
+      return res.send("invalid number");
     }
 
     // Perform the conversion.

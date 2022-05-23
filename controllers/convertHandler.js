@@ -4,7 +4,7 @@ function ConvertHandler() {
     const numericRegex = /^\d+(?:\.\d+)?(?:\/\d+(?:\.\d+)?)?$/;
 
     // Use the search and slice methods to pull the numeric portion from the input.
-    const unitIndex = input.search(/[a-z]+$/);
+    const unitIndex = input.search(/[a-z]+$/i);
     const numericString = unitIndex !== -1 ? input.slice(0, unitIndex) : input;
 
     // Next, test the numeric portion of the measure. If that passes, then parse that numeric
@@ -40,7 +40,7 @@ function ConvertHandler() {
     const unitRegex = /^(?:lbs|gal|mi|kg|l|km)$/i;
 
     // Use the search and slice methods to pull the unit portion from the input.
-    const unitIndex = input.search(/[a-z]+$/);
+    const unitIndex = input.search(/[a-z]+$/i);
     const unitString = unitIndex !== -1 ? input.slice(unitIndex) : "";
 
     // Return the unit string if it is a valid measure unit.
@@ -83,7 +83,7 @@ function ConvertHandler() {
       case "mi":
         return "km";
       default:
-        return "";
+        return "invalid unit";
     }
   };
 
@@ -102,7 +102,7 @@ function ConvertHandler() {
       case "mi":
         return "miles";
       default:
-        return "";
+        return "invalid unit";
     }
   };
 
@@ -135,7 +135,7 @@ function ConvertHandler() {
         break;
 
       default:
-        return null;
+        return "invalid unit";
     }
 
     return result;
